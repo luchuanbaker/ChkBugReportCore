@@ -20,9 +20,8 @@ ChkBugReport uses some very cool, opensource javascript libraries to make the re
  * jquery-cookie (https://github.com/carhartl/jquery-cookie)
  * Flot charts (www.flotcharts.org)
 
-The latest version of ChkBugReport can be found at:
+This project is forked from:
+https://github.com/sonyxperiadev/ChkBugReport
 
-  https://github.com/sonyxperiadev/ChkBugReport
+But we fix some bugs...
 
-If you find some information to be incorrect (broken link, wrong info, false error, etc), feel free
-to contact me: Pal Szasz (pal.szasz@sonymobile.com).

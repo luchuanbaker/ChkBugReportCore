@@ -39,12 +39,7 @@ import com.sonyericsson.chkbugreport.util.Util;
 import com.sonyericsson.chkbugreport.util.XMLNode;
 import com.sonyericsson.chkbugreport.webserver.ChkBugReportWebServer;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintStream;
+import java.io.*;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.sql.Connection;
@@ -716,7 +711,13 @@ public abstract class Module implements ChapterParent {
         for (Section s : mSections) {
             String fn = mDoc.getRelRawDir() + s.getFileName();
             list.add(new Link(mDoc.getRelRawDir() + s.getFileName(), s.getName()));
-            FileOutputStream fos = new FileOutputStream(getBaseDir() + fn);
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream(getBaseDir() + fn);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                continue;
+            }
             PrintStream ps = new PrintStream(fos);
             int cnt = s.getLineCount();
             for (int i = 0; i < cnt; i++) {
